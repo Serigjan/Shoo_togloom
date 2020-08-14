@@ -91,7 +91,7 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
         document.getElementById("score-" + activePlayer).textContent =scores[activePlayer];
        
         // Toglogch hojson esehiig
-        if (scores[activePlayer] >= 20) {
+        if (scores[activePlayer] >= 100) {
           isNewGame=false;
           // Winner gsn textiig abna.
           document.getElementById("name-" + activePlayer).textContent = "ЯЛАГЧ!!!";
