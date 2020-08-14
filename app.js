@@ -11,6 +11,7 @@ initGame();
 
 function initGame() {
 
+  isNewGame = true;
   // togloogchiin eelj
   activePlayer = 0;
 
@@ -40,7 +41,10 @@ function initGame() {
   diceDom.style.display = "none";
 }
 
+// shoo hayh tobch
 document.querySelector(".btn-roll").addEventListener("click", function() {
+  if (isNewGame ===true) {
+
   var diceNumber = Math.floor(Math.random() * 6) + 1;
   diceDom.style.display = "block";
   diceDom.src = "dice-" + diceNumber + ".png";
@@ -48,13 +52,14 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
 
 // Togloogchiin eeljin onoog uurchilnu.
 
-  if(diceNumber !==1)
-  {
+    if(diceNumber !==1)
+    {
     roundScore=roundScore+diceNumber;
     document.getElementById("current-"+ activePlayer).textContent =roundScore;  
-  }
-  else
-  {
+    }
+
+    else
+    {
     roundScore=0;
     document.getElementById("current-" + activePlayer).textContent = 0;
 
@@ -64,12 +69,18 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
     document.querySelector(".player-1-panel").classList.toggle("active");
 
     diceDom.style.display = "none";
+    }
   }
+    else{
+  alert('Тоглоом дууссан байна !')
+    }
   });
 
-  // hold tobchnii event Listener
+  // hadgalah tobchnii event Listener
 
   document.querySelector('.btn-hold').addEventListener("click",function(){
+
+    if (isNewGame ===true) {
     // ug toglogchiin eeljin onoog GOLOBAL DR NEMJ UIGNUU .
     if (activePlayer === 0) {
           scores[0] = scores[0] + roundScore;
@@ -81,6 +92,7 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
        
         // Toglogch hojson esehiig
         if (scores[activePlayer] >= 20) {
+          isNewGame=false;
           // Winner gsn textiig abna.
           document.getElementById("name-" + activePlayer).textContent = "ЯЛАГЧ!!!";
           document.querySelector(".player-" + activePlayer + "-panel").classList.add("winner");
@@ -90,6 +102,10 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
        else{
           switchToNextPlayer();
         }
+      }
+      else{
+    alert('Тоглоом дууссан байна !')
+      }
   });
 
   
