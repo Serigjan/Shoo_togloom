@@ -1,27 +1,44 @@
-// togloogchiin eelj
-var activePlayer = 0;
 
-// onoo hadgalah 
-var scores = [0, 0];
-
-// eeljindee tsugluulj bga onoo
-var roundScore = 0;
-
-// Shooni ali talaar buusaniig ...
-
-
-// program ehlehed
-
-document.getElementById("score-0").textContent = "0";
-document.getElementById("score-1").textContent = "0";
-document.getElementById("current-0").textContent = "0";
-document.getElementById("current-1").textContent = "0";
-
-
-// shoog shiideh eventListener
+var activePlayer ;
+var scores ;
+var roundScore ;
+var isNewGame;
 
 var diceDom = document.querySelector(".dice");
-diceDom.style.display = "none";
+
+// Togloomiig ehluulne
+initGame();
+
+function initGame() {
+
+  // togloogchiin eelj
+  activePlayer = 0;
+
+  // onoo hadgalah 
+  scores = [0, 0];
+
+  // eeljindee tsugluulj bga onoo
+  roundScore = 0;
+
+// program ehlehed
+  document.getElementById("score-0").textContent = "0";
+  document.getElementById("score-1").textContent = "0";
+  document.getElementById("current-0").textContent = "0";
+  document.getElementById("current-1").textContent = "0";
+
+  document.getElementById("name-0").textContent = "Тоглогч 1";
+  document.getElementById("name-1").textContent = "Тоглогч 2";
+
+  document.querySelector(".player-0-panel").classList.remove("winner");
+  document.querySelector(".player-1-panel").classList.remove("winner");
+
+  document.querySelector(".player-0-panel").classList.remove("active");
+  document.querySelector(".player-1-panel").classList.remove("active");
+
+  document.querySelector(".player-0-panel").classList.add("active");
+
+  diceDom.style.display = "none";
+}
 
 document.querySelector(".btn-roll").addEventListener("click", function() {
   var diceNumber = Math.floor(Math.random() * 6) + 1;
@@ -94,4 +111,4 @@ document.querySelector(".btn-roll").addEventListener("click", function() {
 
   // NEw paly ehleh 
 
-  document.querySelector(".btn-new").addEventListener("click", initGame);
+  document.querySelector(".btn-new").addEventListener("click", initGame); 
